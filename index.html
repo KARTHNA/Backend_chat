@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Processor</title>
+</head>
+<body>
+    <h1>Input Processor</h1>
+    <form id="inputForm">
+        <label for="inputData">Enter your input:</label>
+        <input type="text" id="inputData" name="inputData">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        document.getElementById('inputForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const inputData = document.getElementById('inputData').value;
+
+            const response = await fetch('/process', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input_data: inputData })
+            });
+
+            const result = await response.json();
+            document.getElementById('output').innerText = result.result || result.error;
+        });
+    </script>
+</body>
+</html>
