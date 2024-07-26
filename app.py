@@ -17,11 +17,11 @@ def process():
     # Send the input data to Databricks for processing
     databricks_url = "https://adb-1145123843843530.10.azuredatabricks.net/api/2.0/jobs/run-now"
     headers = {
-        "Authorization": "dapie8d22988ce063894e9559568f2278b4a-2",
+        "Authorization": "",
         "Content-Type": "application/json"
     }
     payload = {
-        "job_id": 532836719147641,  # Replace with your Databricks job ID
+        "job_id": 1,  # Replace with your Databricks job ID
         "notebook_params": {
             "input_data": json.dumps(input_data)
         }
